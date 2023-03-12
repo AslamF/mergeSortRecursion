@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+            function fibs(n){
+                  if (n < 2){
+                    return n
+                  }
+                  else {
+                    return (fibs(n-1) + fibs(n-2))
+                  }
+
+            }
+
+            // mergesort == take an array, retrun a sorted array using recursive.
+            
+            
+            function mergeSort(array){  ///// EX= [5, 2, 14, 1]
+                const half = Math.ceil(array.length / 2);
+                let arrayLength  =  array.length;
+                if (arrayLength === 1){
+                    return array
+                }
+                else {
+                    const firstHalf = array.slice(0, half);  // [5, 2]
+                    const secondHalf = array.slice(half); // [14, 1]
+                    
+                    let leftSorted = mergeSort(firstHalf); // [5] 
+                    let rightSorted = mergeSort(secondHalf); // [2]
+
+                    
+                    return merge(leftSorted, rightSorted);
+                    }
+                
+                    
+                }
+
+            function merge(leftSorted, rightSorted){
+                let emptyArray = [];
+
+                while( leftSorted.length && rightSorted.length){
+                    if (leftSorted[0] <= rightSorted[0]){
+                        emptyArray.push(leftSorted.shift())
+                    }
+                    else{
+                        emptyArray.push(rightSorted.shift())
+                    }
+                }
+                while (leftSorted.length){
+                    emptyArray.push(leftSorted.shift())
+                }
+                while(rightSorted.length){
+                    emptyArray.push(rightSorted.shift())
+                }
+                return emptyArray;
+
+            }
+           
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>
